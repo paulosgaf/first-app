@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// const faker = require("faker");
+
 
 // let db = require("./db");
 
@@ -13,19 +13,17 @@ const router = express.Router();
 //Por isso na imagem que está na página home.ejs só há o indicativo para 'images'
 router.use(express.static('public'));
 
-
-
 //************* Exemplode Rotas ************* 
 
 /*
 
-http://localhost:3030/css
-http://localhost:3030/images
-http://localhost:3030/index.html
+http://localhost:3000/css
+http://localhost:3000/images
+http://localhost:3000/index.html
 
-/ = http://localhost:3030/
-/about = http://localhost:3030/about
-/cadastro =  http://localhost:3030/cadastro
+/ = http://localhost:3000/
+/about = http://localhost:3000/about
+/cadastro =  http://localhost:3000/cadastro
 
 */
 
@@ -88,21 +86,21 @@ router.post('/cadastro/remove',(req,res)=>{
 });
 
 
-
 router.post('/cadastro/update',(req,res)=>{
     //substitui os valores armazenados no item do vetror dado por id, por valores fornecidos como parametro vindos do navegador.
     //recebe dados do cliente na forma de um objeto JSON
 
-    users[req.body.id].name=req.body.name;
+    users[req.body.id].image=req.body.image;
+    users[req.body.id].name=req.body.name; //ID do objeto ou Tag: name
     users[req.body.id].email=req.body.email;
     users[req.body.id].address=req.body.address;
     users[req.body.id].age=req.body.age;
-    users[req.body.id].height=req.body.height;
+    users[req.body.id].heigth=req.body.heigth;
     users[req.body.id].vote=req.body.vote;
 
-    console.log("Dados recebidos: ",req.body);//mostra no console do servidor os dados recebidos
 
     res.sendStatus(200); //envia mensagem 200 significando que as modificacoes foram ok
+    console.log("Dados recebidos: ",req.body);//mostra no console do servidor os dados recebidos
 });
 
 router.get('/cadastro/list',(req,res)=>{
@@ -110,8 +108,21 @@ router.get('/cadastro/list',(req,res)=>{
 
 });
 
-router.post('/cadastro/addUser',(req,res)=>{
-    //Para fazer em casa: Como seria uma rotina para listar todos os itens cadastrados?
+router.post('/cadastro/add',(req,res)=>{
+    let user={image:"",name:"",email:"",address:"",heigth:"",age:"",vote:""};
+
+    user.image = req.body._image;
+    user.name = req.body._name;
+    user.email = req.body._email;
+    user.address = req.body._address;
+    user.heigth = req.body._heigth;
+    user.age = req.body._age;
+    user.vote = req.body._vote;
+
+    users.push(user);
+    console.log("Usuário cadastrado: ",user);
+    console.log("Lista dos usuários: ",users)
+    res.sendStatus(200);
 
 });
 
