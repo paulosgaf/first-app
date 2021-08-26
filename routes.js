@@ -69,10 +69,6 @@ router.post('/cadastro/update',(req,res)=>{
     console.log("Dados recebidos: ",req.body);
 });
 
-router.get('/cadastro/list',(req,res)=>{
-
-});
-
 router.post('/cadastro/add',(req,res)=>{
     let user={image:"",name:"",email:"",address:"",heigth:"",age:"",vote:""};
 
@@ -86,12 +82,11 @@ router.post('/cadastro/add',(req,res)=>{
 
     users.push(user);
     console.log("Usuário cadastrado: ",user);
-    console.log("Lista dos usuários: ",users);
-    
-    return res.status(200).json({
-        status:'sucess',
-        data: "Usuário foi adiocionado com sucesso!"
-    });
+    //console.log("Lista dos usuários: ",users);
+
+    //res.sendStatus(200); 
+
+    res.render('pages/cadastro');
 
 });
 

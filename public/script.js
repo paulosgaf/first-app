@@ -1,6 +1,5 @@
 let cadastro;
 
-
 function update(index,link){
 
     let tds = document.querySelectorAll(`td[data-index-row='${index}']`);
@@ -133,7 +132,7 @@ function remove(index,_name,link){
     }
 }
    
-function add(data){
+function add(){
     
 }
 
