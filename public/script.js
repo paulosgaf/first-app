@@ -133,7 +133,31 @@ function remove(index,_name,link){
 }
    
 function add(){
+
+    const http = new XMLHttpRequest();
+    let data = {name:"", email:"", address:"", age:"", heigth:"", vote:""};
+
+    data.name = document.querySelector("#userName").value;
+    data.email = document.querySelector("#userEmail").value;
+    data.address = document.querySelector("#userAddress").value;
+    data.age = document.querySelector("#userAge").value;
+    data.heigth = document.querySelector("#userheigth").value;
+    data.vote = document.querySelector("#userVote").checked;
     
+    if (data.vote) data.vote = "Sim";
+    else data.vote = "Não";
+
+    for (const key in data) {
+        if (data[key] == "") {
+            alert("Por favor certifique-se de preencher todos os dados.")
+            return
+        }
+    }
+    
+    http.open("POST", "/cadastro/add", true); 
+    http.setRequestHeader('Content-Type','application/json');
+    dataToSend = JSON.stringify(data); 
+    http.send(dataToSend);
 }
 
 function list(){

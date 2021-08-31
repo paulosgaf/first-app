@@ -82,9 +82,6 @@ router.post('/cadastro/add',(req,res)=>{
 
     users.push(user);
     console.log("Usuário cadastrado: ",user);
-    //console.log("Lista dos usuários: ",users);
-
-    //res.sendStatus(200); 
 
     res.render('pages/cadastro');
 

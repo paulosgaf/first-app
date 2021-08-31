@@ -14,3 +14,7 @@ html{
     display:inline-block;
     transform: rotate(180deg);
 }
+
+.form-group input{
+    margin-bottom: 10px;
+}
