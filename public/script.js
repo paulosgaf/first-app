@@ -95,6 +95,8 @@ function update(index,link){
                 tds[lenTds-2].className='hidden';
             } else {
 
+                document.location.reload(true);
+                alert("Algum dado foi digitado errado. Tente novamente")
                 console.log("Ocorreu erro no processamento dos dados no servidor: ",http.responseText);
             }     
         }
